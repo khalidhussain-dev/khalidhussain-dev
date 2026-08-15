@@ -55,6 +55,14 @@ const Contact = () => {
             bg: 'rgba(168, 120, 27, 0.08)'
         },
         {
+            Icon: Phone,
+            label: 'Phone',
+            value: '+92-315-0344416',
+            href: 'tel:+923150344416',
+            accent: '#2E7D4F',
+            bg: 'rgba(46, 125, 79, 0.08)'
+        },
+        {
             Icon: Github,
             label: 'GitHub',
             value: 'github.com/khalidhussain-dev',
@@ -138,7 +146,7 @@ const Contact = () => {
                                 Let's Connect
                             </h3>
                             <p className="leading-relaxed text-sm" style={{ color: '#4E4635' }}>
-                                I'm always open to discussing new projects, freelance opportunities, or just having a great conversation about technology and building things.
+                                I'm always open to discussing new projects, collaboration opportunities, or just having a great conversation about technology and building things.
                             </p>
                         </div>
 
@@ -201,7 +209,7 @@ const Contact = () => {
                                 style={{ backgroundColor: '#2E7D4F' }}
                             />
                             <span className="text-sm font-medium" style={{ color: '#2E7D4F' }}>
-                                Available for new projects and freelance work
+                                Available for new projects and contract work
                             </span>
                         </div>
                     </div>

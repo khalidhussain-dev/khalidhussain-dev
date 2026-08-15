@@ -72,7 +72,7 @@ const Experience = () => {
         {
             title: 'Mobile App Developer',
             company: 'YeboNadi & Zintari Mobile',
-            companyType: 'Freelance / Remote',
+            companyType: 'Remote',
             period: 'Feb 2026 – Sep 2026',
             accentColor: '#2F6FA8',
             isCurrent: false,
