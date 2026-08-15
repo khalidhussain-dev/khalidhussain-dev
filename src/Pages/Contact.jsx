@@ -1,27 +1,26 @@
-import { Mail, MapPin, Phone, Send } from 'lucide-react';
+import { Mail, MapPin, Phone, Send, Github, Linkedin } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 
 const Contact = () => {
     const containerRef = useRef(null);
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        message: ''
-    });
+    const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+    const [sending, setSending] = useState(false);
+    const [sent, setSent] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Add your form submission logic here (e.g., EmailJS, API call)
-        console.log('Form submitted:', formData);
-        alert('Thank you for your message! I\'ll get back to you soon.');
-        setFormData({ name: '', email: '', message: '' });
+        setSending(true);
+        // Simulate send — wire up EmailJS or backend here
+        setTimeout(() => {
+            setSending(false);
+            setSent(true);
+            setFormData({ name: '', email: '', message: '' });
+            setTimeout(() => setSent(false), 5000);
+        }, 1200);
     };
 
     const handleChange = (e) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value
-        });
+        setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
     useEffect(() => {
@@ -46,126 +45,266 @@ const Contact = () => {
         };
     }, []);
 
+    const contactItems = [
+        {
+            Icon: Mail,
+            label: 'Email',
+            value: 'khalidhussain.dev@gmail.com',
+            href: 'mailto:khalidhussain.dev@gmail.com',
+            accent: '#A8781B',
+            bg: 'rgba(168, 120, 27, 0.08)'
+        },
+        {
+            Icon: Github,
+            label: 'GitHub',
+            value: 'github.com/khalidhussain-dev',
+            href: 'https://github.com/khalidhussain-dev',
+            accent: '#221C12',
+            bg: 'rgba(34, 28, 18, 0.06)'
+        },
+        {
+            Icon: Linkedin,
+            label: 'LinkedIn',
+            value: 'linkedin.com/in/khalid-hussain-dev',
+            href: 'https://www.linkedin.com/in/khalid-hussain-dev/',
+            accent: '#2F6FA8',
+            bg: 'rgba(47, 111, 168, 0.08)'
+        },
+        {
+            Icon: MapPin,
+            label: 'Location',
+            value: 'Lahore, Pakistan',
+            href: null,
+            accent: '#C43C2C',
+            bg: 'rgba(196, 60, 44, 0.06)'
+        },
+    ];
+
+    const inputStyle = {
+        width: '100%',
+        padding: '12px 16px',
+        backgroundColor: '#F4EEDD',
+        border: '1.5px solid #D9CFB6',
+        borderRadius: '8px',
+        color: '#221C12',
+        fontSize: '0.9rem',
+        outline: 'none',
+        transition: 'border-color 0.3s ease, box-shadow 0.3s ease'
+    };
+
     return (
-        <section id="contact" className="py-20 bg-slate-900 relative overflow-hidden">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(168,85,247,0.05),rgba(255,255,255,0))]"></div>
+        <section
+            id="contact"
+            className="py-20 relative overflow-hidden"
+            style={{ backgroundColor: '#EAE1CA' }}
+        >
+            <div
+                className="absolute inset-0 pointer-events-none"
+                style={{ background: 'radial-gradient(circle at 30% 30%, rgba(168, 120, 27, 0.06), transparent 60%)' }}
+            />
 
             <div ref={containerRef} className="container mx-auto px-6 relative z-10">
-                <div className="scroll-trigger animate-fade-in stagger-1">
-                    <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 bg-linear-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent animate-text-gradient">
+                <div className="scroll-trigger animate-fade-in stagger-1 text-center mb-16">
+                    <p
+                        className="text-sm font-semibold uppercase tracking-widest mb-3"
+                        style={{ color: '#8A7E63', letterSpacing: '0.2em' }}
+                    >
+                        Let's collaborate
+                    </p>
+                    <h2
+                        className="text-4xl md:text-5xl font-bold section-ruled-header inline-block"
+                        style={{
+                            background: 'linear-gradient(135deg, #A8781B, #7A560F)',
+                            WebkitBackgroundClip: 'text',
+                            WebkitTextFillColor: 'transparent',
+                            backgroundClip: 'text'
+                        }}
+                    >
                         Get In Touch
                     </h2>
-                    <p className="text-center text-slate-300 mb-12 max-w-2xl mx-auto animate-blur-in stagger-2">
+                    <p className="mt-6 max-w-2xl mx-auto animate-blur-in stagger-2" style={{ color: '#4E4635' }}>
                         Have a project in mind or want to collaborate? I'd love to hear from you!
                     </p>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
-                    <div className="space-y-8 scroll-fade-in-left">
-                        <div className="scroll-trigger animate-slide-up stagger-1">
-                            <h3 className="text-2xl font-bold text-slate-100 mb-6 animate-text-gradient">Let's Connect</h3>
-                            <p className="text-slate-300 mb-8 leading-relaxed animate-blur-in stagger-2">
-                                I'm always open to discussing new projects, creative ideas, or opportunities
-                                to be part of your vision.
+                    {/* Contact info */}
+                    <div className="space-y-6 scroll-fade-in-left">
+                        <div className="scroll-trigger">
+                            <h3
+                                className="text-2xl font-bold mb-3"
+                                style={{ color: '#221C12' }}
+                            >
+                                Let's Connect
+                            </h3>
+                            <p className="leading-relaxed text-sm" style={{ color: '#4E4635' }}>
+                                I'm always open to discussing new projects, freelance opportunities, or just having a great conversation about technology and building things.
                             </p>
                         </div>
 
-                        <div className="space-y-6">
-                            <div className="scroll-trigger scroll-fade-in-left flex items-start gap-4 group p-4 rounded-lg transition-all duration-300">
-                                <div className="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center shrink-0 group-hover:scale-125 group-hover:bg-purple-500/40 group-hover:rotate-12 transition-all duration-300">
-                                    <Mail className="text-purple-400" size={24} />
+                        <div className="space-y-4">
+                            {contactItems.map(({ Icon, label, value, href, accent, bg }) => (
+                                <div
+                                    key={label}
+                                    className="scroll-trigger scroll-fade-in-left flex items-center gap-4 group p-4 rounded-xl border transition-all duration-300"
+                                    style={{
+                                        backgroundColor: '#FCF8EC',
+                                        borderColor: '#D9CFB6',
+                                        boxShadow: '0 1px 8px rgba(168,120,27,0.06)'
+                                    }}
+                                    onMouseEnter={e => {
+                                        e.currentTarget.style.borderColor = accent;
+                                        e.currentTarget.style.boxShadow = `0 6px 20px rgba(168,120,27,0.12)`;
+                                    }}
+                                    onMouseLeave={e => {
+                                        e.currentTarget.style.borderColor = '#D9CFB6';
+                                        e.currentTarget.style.boxShadow = '0 1px 8px rgba(168,120,27,0.06)';
+                                    }}
+                                >
+                                    <div
+                                        className="w-11 h-11 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-all duration-300"
+                                        style={{ backgroundColor: bg }}
+                                    >
+                                        <Icon size={20} style={{ color: accent }} />
+                                    </div>
+                                    <div>
+                                        <p className="text-xs font-semibold uppercase tracking-wider mb-0.5" style={{ color: '#8A7E63' }}>
+                                            {label}
+                                        </p>
+                                        {href ? (
+                                            <a
+                                                href={href}
+                                                target={href.startsWith('http') ? '_blank' : undefined}
+                                                rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                                                className="text-sm font-medium transition-colors duration-300 hover:underline"
+                                                style={{ color: '#221C12' }}
+                                                onMouseEnter={e => e.currentTarget.style.color = accent}
+                                                onMouseLeave={e => e.currentTarget.style.color = '#221C12'}
+                                            >
+                                                {value}
+                                            </a>
+                                        ) : (
+                                            <p className="text-sm font-medium" style={{ color: '#221C12' }}>{value}</p>
+                                        )}
+                                    </div>
                                 </div>
-                                <div>
-                                    <h4 className="text-slate-100 font-semibold mb-1">Email</h4>
-                                    <a href="mailto:your.email@example.com" className="text-slate-300 hover:text-purple-400 hover:underline transition-colors duration-300">
-                                        your.email@example.com
-                                    </a>
-                                </div>
-                            </div>
+                            ))}
+                        </div>
 
-                            <div className="scroll-trigger scroll-fade-in-left flex items-start gap-4 group p-4 rounded-lg transition-all duration-300 scroll-stagger-1">
-                                <div className="w-12 h-12 bg-pink-500/20 rounded-lg flex items-center justify-center shrink-0 group-hover:scale-125 group-hover:bg-pink-500/40 group-hover:rotate-12 transition-all duration-300">
-                                    <Phone className="text-pink-400" size={24} />
-                                </div>
-                                <div>
-                                    <h4 className="text-slate-100 font-semibold mb-1">Phone</h4>
-                                    <a href="tel:+1234567890" className="text-slate-300 hover:text-pink-400 hover:underline transition-colors duration-300">
-                                        +1 (234) 567-890
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div className="scroll-trigger scroll-fade-in-left flex items-start gap-4 group p-4 rounded-lg transition-all duration-300 scroll-stagger-2">
-                                <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center shrink-0 group-hover:scale-125 group-hover:bg-blue-500/40 group-hover:rotate-12 transition-all duration-300">
-                                    <MapPin className="text-blue-400" size={24} />
-                                </div>
-                                <div>
-                                    <h4 className="text-slate-100 font-semibold mb-1">Location</h4>
-                                    <p className="text-slate-300">
-                                        Your City, Country
-                                    </p>
-                                </div>
-                            </div>
+                        {/* Availability indicator */}
+                        <div
+                            className="flex items-center gap-3 px-4 py-3 rounded-xl border"
+                            style={{ backgroundColor: 'rgba(46, 125, 79, 0.08)', borderColor: 'rgba(46, 125, 79, 0.25)' }}
+                        >
+                            <span
+                                className="w-2.5 h-2.5 rounded-full animate-pulse flex-shrink-0"
+                                style={{ backgroundColor: '#2E7D4F' }}
+                            />
+                            <span className="text-sm font-medium" style={{ color: '#2E7D4F' }}>
+                                Available for new projects and freelance work
+                            </span>
                         </div>
                     </div>
 
-                    <div className="scroll-trigger scroll-fade-in-right bg-slate-800/50 backdrop-blur-sm p-8 rounded-xl border border-slate-700/50 hover:border-slate-600 hover:shadow-2xl hover:shadow-purple-500/40 hover-glow transition-all duration-500 stagger-2">
-                        <form onSubmit={handleSubmit} className="space-y-6">
-                            <div className="animate-fade-in stagger-3">
-                                <label htmlFor="name" className="block text-slate-100 font-medium mb-2 animate-blur-in">
-                                    Name
-                                </label>
-                                <input
-                                    type="text"
-                                    id="name"
-                                    name="name"
-                                    value={formData.name}
-                                    onChange={handleChange}
-                                    required
-                                    className="w-full px-4 py-3 bg-slate-900/80 border border-slate-700/50 rounded-lg text-slate-100 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/40 hover:border-slate-600 transition-all duration-300"
-                                    placeholder="Your name"
-                                />
+                    {/* Contact form */}
+                    <div
+                        className="scroll-trigger scroll-fade-in-right p-8 rounded-xl border transition-all duration-500 stagger-2 card-brass-rule"
+                        style={{
+                            backgroundColor: '#FCF8EC',
+                            borderColor: '#D9CFB6',
+                            boxShadow: '0 2px 16px rgba(168,120,27,0.08)'
+                        }}
+                    >
+                        {sent ? (
+                            <div className="h-full flex flex-col items-center justify-center text-center py-8">
+                                <div
+                                    className="w-16 h-16 rounded-full flex items-center justify-center mb-4 animate-bounce-in"
+                                    style={{ backgroundColor: 'rgba(46,125,79,0.12)' }}
+                                >
+                                    <span className="text-3xl">✓</span>
+                                </div>
+                                <h4 className="text-xl font-bold mb-2" style={{ color: '#2E7D4F' }}>Message Sent!</h4>
+                                <p className="text-sm" style={{ color: '#4E4635' }}>
+                                    Thanks for reaching out. I'll get back to you soon!
+                                </p>
                             </div>
+                        ) : (
+                            <form onSubmit={handleSubmit} className="space-y-5">
+                                {[
+                                    { id: 'name', label: 'Name', type: 'text', placeholder: 'Your full name' },
+                                    { id: 'email', label: 'Email', type: 'email', placeholder: 'your.email@example.com' },
+                                ].map(({ id, label, type, placeholder }) => (
+                                    <div key={id}>
+                                        <label
+                                            htmlFor={id}
+                                            className="block text-sm font-semibold mb-1.5 uppercase tracking-wider"
+                                            style={{ color: '#4E4635', letterSpacing: '0.08em' }}
+                                        >
+                                            {label}
+                                        </label>
+                                        <input
+                                            type={type}
+                                            id={id}
+                                            name={id}
+                                            value={formData[id]}
+                                            onChange={handleChange}
+                                            required
+                                            style={inputStyle}
+                                            placeholder={placeholder}
+                                            onFocus={e => {
+                                                e.target.style.borderColor = '#A8781B';
+                                                e.target.style.boxShadow = '0 0 0 3px rgba(168,120,27,0.12)';
+                                            }}
+                                            onBlur={e => {
+                                                e.target.style.borderColor = '#D9CFB6';
+                                                e.target.style.boxShadow = 'none';
+                                            }}
+                                        />
+                                    </div>
+                                ))}
 
-                            <div className="animate-fade-in stagger-4">
-                                <label htmlFor="email" className="block text-slate-100 font-medium mb-2 animate-blur-in">
-                                    Email
-                                </label>
-                                <input
-                                    type="email"
-                                    id="email"
-                                    name="email"
-                                    value={formData.email}
-                                    onChange={handleChange}
-                                    required
-                                    className="w-full px-4 py-3 bg-slate-900/80 border border-slate-700/50 rounded-lg text-slate-100 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/40 hover:border-slate-600 transition-all duration-300"
-                                    placeholder="your.email@example.com"
-                                />
-                            </div>
+                                <div>
+                                    <label
+                                        htmlFor="message"
+                                        className="block text-sm font-semibold mb-1.5 uppercase tracking-wider"
+                                        style={{ color: '#4E4635', letterSpacing: '0.08em' }}
+                                    >
+                                        Message
+                                    </label>
+                                    <textarea
+                                        id="message"
+                                        name="message"
+                                        value={formData.message}
+                                        onChange={handleChange}
+                                        required
+                                        rows="5"
+                                        style={{ ...inputStyle, resize: 'none' }}
+                                        placeholder="Tell me about your project..."
+                                        onFocus={e => {
+                                            e.target.style.borderColor = '#A8781B';
+                                            e.target.style.boxShadow = '0 0 0 3px rgba(168,120,27,0.12)';
+                                        }}
+                                        onBlur={e => {
+                                            e.target.style.borderColor = '#D9CFB6';
+                                            e.target.style.boxShadow = 'none';
+                                        }}
+                                    />
+                                </div>
 
-                            <div className="animate-fade-in stagger-5">
-                                <label htmlFor="message" className="block text-slate-100 font-medium mb-2 animate-blur-in">
-                                    Message
-                                </label>
-                                <textarea
-                                    id="message"
-                                    name="message"
-                                    value={formData.message}
-                                    onChange={handleChange}
-                                    required
-                                    rows="5"
-                                    className="w-full px-4 py-3 bg-slate-900/80 border border-slate-700/50 rounded-lg text-slate-100 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/40 hover:border-slate-600 resize-none transition-all duration-300"
-                                    placeholder="Your message..."
-                                ></textarea>
-                            </div>
-
-                            <button
-                                type="submit"
-                                className="w-full px-8 py-3 bg-linear-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/50 text-white font-semibold rounded-lg flex items-center justify-center gap-2 transition-all duration-300 animate-slide-up stagger-6 cursor-pointer"
-                            >
-                                Send Message <Send size={20} />
-                            </button>
-                        </form>
+                                <button
+                                    type="submit"
+                                    disabled={sending}
+                                    className="w-full py-3 px-8 rounded-lg font-semibold flex items-center justify-center gap-2 transition-all duration-300 cursor-pointer hover:scale-105 btn-hover"
+                                    style={{
+                                        background: sending ? '#D9CFB6' : 'linear-gradient(135deg, #A8781B, #7A560F)',
+                                        color: sending ? '#8A7E63' : '#FCF8EC',
+                                        boxShadow: sending ? 'none' : '0 4px 18px rgba(168,120,27,0.3)'
+                                    }}
+                                >
+                                    {sending ? 'Sending...' : (<>Send Message <Send size={18} /></>)}
+                                </button>
+                            </form>
+                        )}
                     </div>
                 </div>
             </div>

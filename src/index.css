@@ -1,5 +1,39 @@
 @import "tailwindcss";
 
+/* ============ DESIGN SYSTEM — BRAND TOKENS ============ */
+/* "The Tradesman's Job Docket" palette from DESIGN.md */
+
+:root {
+  /* Ground / Paper */
+  --paper:         #F4EEDD;
+  --paper-raised:  #FCF8EC;
+  --paper-sunken:  #EAE1CA;
+
+  /* Ink */
+  --ink:           #221C12;
+  --ink-secondary: #4E4635;
+  --ink-faint:     #8A7E63;
+
+  /* Rules / Borders */
+  --rule:          #D9CFB6;
+  --rule-strong:   #B9AC8F;
+  --slot-blue:     #A9B8C8;
+
+  /* Stamp / Alert / Error */
+  --stamp:         #C43C2C;
+  --stamp-light:   #E06050;
+
+  /* Brand Brass (gold) */
+  --brass:         #A8781B;
+  --brass-light:   #D6BC6E;
+  --brass-deep:    #7A560F;
+
+  /* Status */
+  --success:       #2E7D4F;
+  --warning:       #9A6A1B;
+  --info:          #2F6FA8;
+}
+
 /* ============ ENHANCED ANIMATIONS ============ */
 
 /* Fade In Animation */
@@ -78,16 +112,16 @@
   }
 }
 
-/* Glow Pulse Animation */
+/* Glow Pulse Animation — brass gold */
 @keyframes glowPulse {
   0%,
   100% {
-    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3),
-      0 0 40px rgba(139, 92, 246, 0.1);
+    box-shadow: 0 0 20px rgba(168, 120, 27, 0.25),
+      0 0 40px rgba(168, 120, 27, 0.08);
   }
   50% {
-    box-shadow: 0 0 30px rgba(139, 92, 246, 0.5),
-      0 0 60px rgba(139, 92, 246, 0.2);
+    box-shadow: 0 0 30px rgba(168, 120, 27, 0.45),
+      0 0 60px rgba(168, 120, 27, 0.18);
   }
 }
 
@@ -150,25 +184,31 @@
   }
 }
 
-/* Stagger Effect for Lists */
-.stagger-1 {
-  animation-delay: 0.1s;
+/* ============ SCREENSHOT SCROLL ANIMATION ============ */
+/* For long full-page screenshots — slowly pans top to bottom */
+@keyframes scrollImage {
+  0% {
+    object-position: center top;
+  }
+  50% {
+    object-position: center bottom;
+  }
+  100% {
+    object-position: center top;
+  }
 }
-.stagger-2 {
-  animation-delay: 0.2s;
+
+.animate-scroll-image {
+  animation: scrollImage 12s ease-in-out infinite;
 }
-.stagger-3 {
-  animation-delay: 0.3s;
-}
-.stagger-4 {
-  animation-delay: 0.4s;
-}
-.stagger-5 {
-  animation-delay: 0.5s;
-}
-.stagger-6 {
-  animation-delay: 0.6s;
-}
+
+/* ============ STAGGER DELAYS ============ */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+.stagger-6 { animation-delay: 0.6s; }
 
 /* Animation Utility Classes */
 .animate-fade-in {
@@ -208,7 +248,7 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.1),
+    rgba(168, 120, 27, 0.12),
     transparent
   );
   background-size: 1000px 100%;
@@ -238,7 +278,7 @@
 
 .hover-lift:hover {
   transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(139, 92, 246, 0.2);
+  box-shadow: 0 20px 40px rgba(168, 120, 27, 0.18);
 }
 
 .hover-glow {
@@ -246,7 +286,7 @@
 }
 
 .hover-glow:hover {
-  box-shadow: 0 0 20px rgba(139, 92, 246, 0.5), 0 0 40px rgba(139, 92, 246, 0.2);
+  box-shadow: 0 0 20px rgba(168, 120, 27, 0.35), 0 0 40px rgba(168, 120, 27, 0.12);
 }
 
 /* Smooth transitions for all interactive elements */
@@ -267,23 +307,23 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar — brass palette */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0f172a;
+  background: #EAE1CA;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #a78bfa, #ec4899);
-  border-radius: 5px;
+  background: linear-gradient(to bottom, #A8781B, #D6BC6E);
+  border-radius: 4px;
   transition: background 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, #c4b5fd, #f472b6);
+  background: linear-gradient(to bottom, #7A560F, #A8781B);
 }
 
 /* Intersection Observer Animation Support */
@@ -295,10 +335,18 @@ html {
   opacity: 1;
 }
 
-/* Text Animation */
+/* Text Gradient — brass gold */
 .text-gradient {
-  background: linear-gradient(135deg, #a78bfa 0%, #ec4899 100%);
+  background: linear-gradient(135deg, #A8781B 0%, #D6BC6E 50%, #A8781B 100%);
   background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Text Gradient — stamp red (for emphasis) */
+.text-gradient-stamp {
+  background: linear-gradient(135deg, #C43C2C 0%, #E06050 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -310,7 +358,6 @@ html {
 
 /* ============ SCROLL TRIGGER ANIMATIONS ============ */
 
-/* Initial state for scroll-triggered elements */
 .scroll-trigger {
   opacity: 0;
   transform: translateY(40px);
@@ -322,7 +369,6 @@ html {
   transform: translateY(0);
 }
 
-/* Scroll fade in - left */
 .scroll-fade-in-left {
   opacity: 0;
   transform: translateX(-60px);
@@ -334,7 +380,6 @@ html {
   transform: translateX(0);
 }
 
-/* Scroll fade in - right */
 .scroll-fade-in-right {
   opacity: 0;
   transform: translateX(60px);
@@ -346,7 +391,6 @@ html {
   transform: translateX(0);
 }
 
-/* Scroll scale in */
 .scroll-scale-in {
   opacity: 0;
   transform: scale(0.85);
@@ -358,7 +402,6 @@ html {
   transform: scale(1);
 }
 
-/* Scroll rotate in */
 .scroll-rotate-in {
   opacity: 0;
   transform: rotate(-5deg) scale(0.9);
@@ -371,31 +414,14 @@ html {
 }
 
 /* Stagger delay for scroll animations */
-.scroll-stagger-1 {
-  transition-delay: 0.1s;
-}
+.scroll-stagger-1 { transition-delay: 0.1s; }
+.scroll-stagger-2 { transition-delay: 0.2s; }
+.scroll-stagger-3 { transition-delay: 0.3s; }
+.scroll-stagger-4 { transition-delay: 0.4s; }
+.scroll-stagger-5 { transition-delay: 0.5s; }
+.scroll-stagger-6 { transition-delay: 0.6s; }
 
-.scroll-stagger-2 {
-  transition-delay: 0.2s;
-}
-
-.scroll-stagger-3 {
-  transition-delay: 0.3s;
-}
-
-.scroll-stagger-4 {
-  transition-delay: 0.4s;
-}
-
-.scroll-stagger-5 {
-  transition-delay: 0.5s;
-}
-
-.scroll-stagger-6 {
-  transition-delay: 0.6s;
-}
-
-/* Glow effect on scroll reveal */
+/* Glow effect on scroll reveal — brass */
 .scroll-glow {
   opacity: 0;
   transform: translateY(40px);
@@ -405,12 +431,11 @@ html {
 .scroll-glow.visible {
   opacity: 1;
   transform: translateY(0);
-  box-shadow: 0 0 20px rgba(139, 92, 246, 0.3), 0 0 40px rgba(139, 92, 246, 0.1);
+  box-shadow: 0 0 20px rgba(168, 120, 27, 0.2), 0 0 40px rgba(168, 120, 27, 0.08);
 }
 
 /* ============ ADVANCED HOVER & CLICK ANIMATIONS ============ */
 
-/* Smooth button hover animations */
 .btn-hover {
   position: relative;
   overflow: hidden;
@@ -424,7 +449,7 @@ html {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.12);
   transition: left 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   z-index: -1;
 }
@@ -445,7 +470,7 @@ html {
 
 .card-hover:hover {
   transform: translateY(-12px) scale(1.02);
-  box-shadow: 0 25px 50px rgba(139, 92, 246, 0.25);
+  box-shadow: 0 25px 50px rgba(168, 120, 27, 0.18);
 }
 
 .card-hover:active {
@@ -467,7 +492,7 @@ html {
   left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(to right, #a78bfa, #ec4899);
+  background: linear-gradient(to right, #A8781B, #D6BC6E);
   transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
@@ -486,16 +511,16 @@ html {
   transition: transform 0.1s ease-in;
 }
 
-/* Pulse effect on interaction */
+/* Pulse effect on interaction — brass */
 @keyframes pulseBig {
   0% {
-    box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.7);
+    box-shadow: 0 0 0 0 rgba(168, 120, 27, 0.6);
   }
   70% {
-    box-shadow: 0 0 0 10px rgba(139, 92, 246, 0);
+    box-shadow: 0 0 0 10px rgba(168, 120, 27, 0);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(139, 92, 246, 0);
+    box-shadow: 0 0 0 0 rgba(168, 120, 27, 0);
   }
 }
 
@@ -503,7 +528,7 @@ html {
   animation: pulseBig 0.6s ease-out;
 }
 
-/* Text shimmer on hover */
+/* Text shimmer on hover — brass */
 @keyframes textShimmer {
   0% {
     background-position: -1000px 0;
@@ -516,10 +541,10 @@ html {
 .text-shimmer {
   background: linear-gradient(
     90deg,
-    #a78bfa 0%,
-    #ec4899 20%,
-    #a78bfa 40%,
-    #a78bfa 100%
+    #A8781B 0%,
+    #D6BC6E 20%,
+    #A8781B 40%,
+    #A8781B 100%
   );
   background-size: 1000px 100%;
   -webkit-background-clip: text;
@@ -532,31 +557,31 @@ html {
   animation: textShimmer 0.8s linear infinite;
 }
 
-/* Smooth scale and glow on interactive elements */
+/* Smooth scale and glow */
 .interactive-glow {
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .interactive-glow:hover {
   transform: scale(1.08);
-  filter: drop-shadow(0 0 15px rgba(139, 92, 246, 0.5));
+  filter: drop-shadow(0 0 15px rgba(168, 120, 27, 0.45));
 }
 
 .interactive-glow:active {
   transform: scale(0.98);
-  filter: drop-shadow(0 0 8px rgba(139, 92, 246, 0.3));
+  filter: drop-shadow(0 0 8px rgba(168, 120, 27, 0.25));
 }
 
 /* Smooth border glow */
 @keyframes borderGlow {
   0% {
-    box-shadow: inset 0 0 0 1px rgba(139, 92, 246, 0.3);
+    box-shadow: inset 0 0 0 1px rgba(168, 120, 27, 0.25);
   }
   50% {
-    box-shadow: inset 0 0 10px 0 rgba(139, 92, 246, 0.5);
+    box-shadow: inset 0 0 10px 0 rgba(168, 120, 27, 0.45);
   }
   100% {
-    box-shadow: inset 0 0 0 1px rgba(139, 92, 246, 0.3);
+    box-shadow: inset 0 0 0 1px rgba(168, 120, 27, 0.25);
   }
 }
 
@@ -564,14 +589,14 @@ html {
   animation: borderGlow 1.5s ease-in-out infinite;
 }
 
-/* Staggered fade-in for lists on interaction */
+/* Staggered list hover */
 .item-hover {
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .item-hover:hover {
   transform: translateX(6px);
-  color: #c4b5fd;
+  color: #A8781B;
 }
 
 .item-hover:active {
@@ -579,7 +604,7 @@ html {
   transition: transform 0.1s ease-in;
 }
 
-/* Smooth rotate and lift */
+/* Rotate and lift */
 .rotate-lift:hover {
   transform: rotate(3deg) translateY(-8px);
   transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -590,16 +615,7 @@ html {
   transition: transform 0.1s ease-in;
 }
 
-/* Invert color effect on hover */
-@keyframes colorInvert {
-  0% {
-    filter: invert(0);
-  }
-  100% {
-    filter: invert(1);
-  }
-}
-
+/* Color invert/brighten on hover */
 .color-invert:hover {
   filter: brightness(1.2) saturate(1.3);
   transition: filter 0.4s ease;
@@ -607,4 +623,137 @@ html {
 
 .color-invert:active {
   filter: brightness(0.95) saturate(1);
+}
+
+/* ============ PROJECT IMAGE CONTAINERS ============ */
+
+/* Long screenshots — scroll pan animation */
+.img-scroll-container {
+  position: relative;
+  overflow: hidden;
+  height: 220px;
+}
+
+.img-scroll-container img {
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  animation: scrollImage 14s ease-in-out infinite;
+  transition: transform 0.5s ease;
+}
+
+.img-scroll-container:hover img {
+  animation-play-state: paused;
+}
+
+/* Normal screenshots — static with scale hover */
+.img-static-container {
+  position: relative;
+  overflow: hidden;
+  height: 220px;
+}
+
+.img-static-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.6s ease;
+}
+
+.img-static-container:hover img {
+  transform: scale(1.05);
+}
+
+/* Mobile app screenshot containers — portrait ratio */
+.img-mobile-container {
+  position: relative;
+  overflow: hidden;
+  height: 220px;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  padding: 8px;
+  background: linear-gradient(135deg, #EAE1CA, #F4EEDD);
+}
+
+.img-mobile-container img {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  flex: 1;
+  transition: transform 0.5s ease;
+}
+
+.img-mobile-container:hover img {
+  transform: scale(1.04) translateY(-4px);
+}
+
+/* ============ SECTION RULED HEADERS ============ */
+
+.section-ruled-header {
+  position: relative;
+  padding-bottom: 12px;
+  margin-bottom: 8px;
+}
+
+.section-ruled-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(to right, #A8781B, #D6BC6E, #A8781B);
+  border-radius: 2px;
+}
+
+/* ============ BRASS CARD TOP RULE ============ */
+.card-brass-rule {
+  position: relative;
+}
+
+.card-brass-rule::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(to right, #A8781B, #D6BC6E, #A8781B);
+  border-radius: 3px 3px 0 0;
+}
+
+/* ============ TAB FILTER BUTTONS ============ */
+.tab-filter {
+  padding: 8px 24px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: 1.5px solid #B9AC8F;
+  color: #4E4635;
+  background: #FCF8EC;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.tab-filter:hover {
+  border-color: #A8781B;
+  color: #A8781B;
+  background: #F4EEDD;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(168, 120, 27, 0.15);
+}
+
+.tab-filter.active {
+  background: linear-gradient(135deg, #A8781B, #7A560F);
+  border-color: #A8781B;
+  color: #FCF8EC;
+  box-shadow: 0 4px 16px rgba(168, 120, 27, 0.35);
 }

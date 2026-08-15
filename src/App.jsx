@@ -9,7 +9,7 @@ import Contact from './Pages/Contact'
 
 function App() {
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-200">
+    <div style={{ backgroundColor: '#F4EEDD', color: '#221C12' }} className="min-h-screen">
       <Navbar />
       <main>
         <Hero />

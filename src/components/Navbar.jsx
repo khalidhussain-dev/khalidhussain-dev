@@ -25,17 +25,31 @@ const Navbar = () => {
     return (
         <nav
             className={`fixed top-0 w-full z-50 transition-all duration-500 ${isScrolled
-                ? 'bg-slate-900/95 backdrop-blur-md shadow-2xl shadow-purple-500/30 border-b border-purple-500/20'
+                ? 'backdrop-blur-md shadow-lg border-b'
                 : 'bg-transparent border-b border-transparent'
                 }`}
+            style={isScrolled ? {
+                backgroundColor: 'rgba(252, 248, 236, 0.97)',
+                borderColor: '#B9AC8F',
+                boxShadow: '0 4px 24px rgba(168, 120, 27, 0.12)'
+            } : {}}
         >
             <div className="container mx-auto px-6">
                 <div className="flex items-center justify-between h-20">
-                    <a href="#home" className="text-2xl font-bold bg-linear-to-r from-purple-400 via-pink-500 to-purple-600 bg-clip-text text-transparent hover:scale-110 hover:drop-shadow-lg transition-all duration-300 animate-slide-in-left flex items-center gap-2 group transform-gpu">
-                        <div className="w-8 h-8 rounded-lg bg-linear-to-r from-purple-500 to-pink-500 flex items-center justify-center group-hover:rotate-12 group-hover:scale-125 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-purple-500/50">
-                            <Code2 size={18} className="text-white" />
+                    <a
+                        href="#home"
+                        className="text-2xl font-bold hover:scale-110 hover:drop-shadow-lg transition-all duration-300 animate-slide-in-left flex items-center gap-2 group transform-gpu"
+                        style={{ color: '#A8781B' }}
+                    >
+                        <div
+                            className="w-8 h-8 rounded-lg flex items-center justify-center group-hover:rotate-12 group-hover:scale-125 transition-all duration-300"
+                            style={{ background: 'linear-gradient(135deg, #A8781B, #D6BC6E)' }}
+                        >
+                            <Code2 size={18} style={{ color: '#FCF8EC' }} />
                         </div>
-                        <span className="hidden sm:inline">Khalid</span>
+                        <span className="hidden sm:inline" style={{ background: 'linear-gradient(135deg, #A8781B, #7A560F)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+                            Khalid
+                        </span>
                     </a>
 
                     {/* Desktop Menu */}
@@ -44,18 +58,33 @@ const Navbar = () => {
                             <a
                                 key={item.name}
                                 href={item.href}
-                                className="text-slate-300 hover:text-purple-300 px-4 py-2 rounded-lg font-medium transition-all duration-600 relative group animate-fade-in hover:bg-purple-500/10 hover:shadow-lg hover:shadow-purple-500/20 hover:scale-110"
-                                style={{ animationDelay: `${index * 0.08}s` }}
+                                className="px-4 py-2 rounded-lg font-medium transition-all duration-300 relative group animate-fade-in hover:scale-105"
+                                style={{
+                                    color: '#4E4635',
+                                    animationDelay: `${index * 0.08}s`
+                                }}
+                                onMouseEnter={e => {
+                                    e.currentTarget.style.color = '#A8781B';
+                                    e.currentTarget.style.backgroundColor = 'rgba(168, 120, 27, 0.08)';
+                                }}
+                                onMouseLeave={e => {
+                                    e.currentTarget.style.color = '#4E4635';
+                                    e.currentTarget.style.backgroundColor = 'transparent';
+                                }}
                             >
                                 <span className="relative z-10">{item.name}</span>
-                                <span className="absolute -bottom-1 left-4 w-0 h-1 bg-linear-to-r from-purple-400 to-pink-500 group-hover:w-[calc(100%-32px)] transition-all duration-300 rounded-full"></span>
+                                <span
+                                    className="absolute -bottom-1 left-4 w-0 h-0.5 group-hover:w-[calc(100%-32px)] transition-all duration-300 rounded-full"
+                                    style={{ background: 'linear-gradient(to right, #A8781B, #D6BC6E)' }}
+                                ></span>
                             </a>
                         ))}
                     </div>
 
                     {/* Mobile Menu Button */}
                     <button
-                        className="md:hidden text-slate-100 hover:text-purple-400 transition-all duration-300 cursor-pointer hover:scale-125"
+                        className="md:hidden transition-all duration-300 cursor-pointer hover:scale-125"
+                        style={{ color: '#221C12' }}
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                     >
                         {isMobileMenuOpen ? (
@@ -68,17 +97,34 @@ const Navbar = () => {
 
                 {/* Mobile Menu */}
                 {isMobileMenuOpen && (
-                    <div className="md:hidden py-4 px-4 bg-linear-to-b from-slate-900/98 to-slate-950/95 backdrop-blur-lg rounded-b-2xl animate-slide-up shadow-2xl shadow-purple-500/30 border-b border-purple-500/20 space-y-2">
+                    <div
+                        className="md:hidden py-4 px-4 backdrop-blur-lg rounded-b-2xl animate-slide-up shadow-xl space-y-2 border-b"
+                        style={{ backgroundColor: 'rgba(252, 248, 236, 0.98)', borderColor: '#B9AC8F' }}
+                    >
                         {navItems.map((item, index) => (
                             <a
                                 key={item.name}
                                 href={item.href}
-                                className="block py-3 px-4 text-slate-300 hover:text-purple-300 rounded-lg font-medium animate-fade-in hover:bg-linear-to-r hover:from-purple-500/20 hover:to-pink-500/10 hover:shadow-lg hover:shadow-purple-500/30 hover:border hover:border-purple-500/30 transition-all duration-300 group hover:scale-105"
-                                style={{ animationDelay: `${index * 0.06}s` }}
+                                className="block py-3 px-4 rounded-lg font-medium animate-fade-in transition-all duration-300 hover:scale-105"
+                                style={{
+                                    color: '#4E4635',
+                                    animationDelay: `${index * 0.06}s`
+                                }}
+                                onMouseEnter={e => {
+                                    e.currentTarget.style.color = '#A8781B';
+                                    e.currentTarget.style.backgroundColor = 'rgba(168, 120, 27, 0.08)';
+                                }}
+                                onMouseLeave={e => {
+                                    e.currentTarget.style.color = '#4E4635';
+                                    e.currentTarget.style.backgroundColor = 'transparent';
+                                }}
                                 onClick={() => setIsMobileMenuOpen(false)}
                             >
                                 <span className="flex items-center gap-2">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-linear-to-r from-purple-400 to-pink-500 group-hover:scale-150 transition-transform duration-300"></span>
+                                    <span
+                                        className="w-1.5 h-1.5 rounded-full"
+                                        style={{ background: 'linear-gradient(to right, #A8781B, #D6BC6E)' }}
+                                    ></span>
                                     {item.name}
                                 </span>
                             </a>

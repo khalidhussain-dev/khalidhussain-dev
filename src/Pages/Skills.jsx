@@ -28,59 +28,105 @@ const Skills = () => {
     const skillCategories = [
         {
             title: "Frontend",
-            skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "HTML5", "CSS3", "JavaScript"],
-            color: "purple"
+            skills: ["React.js", "Next.js", "TypeScript", "JavaScript", "Redux", "Tailwind CSS", "Framer Motion", "HTML5 / CSS3"],
+            accent: '#A8781B',
+            bgTint: 'rgba(168, 120, 27, 0.06)',
+            border: 'rgba(168, 120, 27, 0.22)',
+            tagBg: 'rgba(168, 120, 27, 0.1)',
+            tagColor: '#7A560F',
+            tagBorder: 'rgba(168, 120, 27, 0.3)'
         },
         {
             title: "Backend",
-            skills: ["Node.js", "Express", "Python", "Django", "FastAPI", "REST APIs", "GraphQL"],
-            color: "pink"
+            skills: ["Node.js", "Nest.js", "Express.js", "Python", "FastAPI", "REST APIs", "Redis", "JWT / Auth"],
+            accent: '#C43C2C',
+            bgTint: 'rgba(196, 60, 44, 0.06)',
+            border: 'rgba(196, 60, 44, 0.22)',
+            tagBg: 'rgba(196, 60, 44, 0.1)',
+            tagColor: '#A02010',
+            tagBorder: 'rgba(196, 60, 44, 0.3)'
         },
         {
-            title: "AI & ML",
-            skills: ["TensorFlow", "PyTorch", "OpenAI", "LangChain", "NLP", "Computer Vision", "Deep Learning"],
-            color: "blue"
+            title: "Mobile",
+            skills: ["React Native", "Kotlin", "Jetpack Compose", "Android", "iOS", "Room Database", "DataStore", "Material 3"],
+            accent: '#2F6FA8',
+            bgTint: 'rgba(47, 111, 168, 0.06)',
+            border: 'rgba(47, 111, 168, 0.22)',
+            tagBg: 'rgba(47, 111, 168, 0.1)',
+            tagColor: '#1A4F80',
+            tagBorder: 'rgba(47, 111, 168, 0.3)'
         },
         {
-            title: "Database",
-            skills: ["MongoDB", "PostgreSQL", "MySQL", "Redis", "Firebase", "Prisma"],
-            color: "green"
+            title: "AI & Machine Learning",
+            skills: ["Azure OpenAI", "HuggingFace Transformers", "DistilBERT", "OpenCV", "InsightFace", "Face Recognition", "NLP", "Sentiment Analysis"],
+            accent: '#2E7D4F',
+            bgTint: 'rgba(46, 125, 79, 0.06)',
+            border: 'rgba(46, 125, 79, 0.22)',
+            tagBg: 'rgba(46, 125, 79, 0.1)',
+            tagColor: '#1A5C35',
+            tagBorder: 'rgba(46, 125, 79, 0.3)'
         },
         {
-            title: "DevOps & Tools",
-            skills: ["Git", "Docker", "AWS", "CI/CD", "Linux", "Nginx", "Vercel"],
-            color: "orange"
+            title: "Database & Storage",
+            skills: ["PostgreSQL", "MongoDB", "MySQL", "SQLite", "Redis", "Prisma ORM", "Cloudinary", "Strapi CMS"],
+            accent: '#9A6A1B',
+            bgTint: 'rgba(154, 106, 27, 0.06)',
+            border: 'rgba(154, 106, 27, 0.22)',
+            tagBg: 'rgba(154, 106, 27, 0.1)',
+            tagColor: '#7A4C0A',
+            tagBorder: 'rgba(154, 106, 27, 0.3)'
         },
         {
-            title: "Other",
-            skills: ["Agile", "Testing", "System Design", "Problem Solving", "Team Collaboration"],
-            color: "indigo"
+            title: "Cloud & DevOps",
+            skills: ["Microsoft Azure", "Azure Communication Services", "Azure Speech Services", "Stripe Connect", "Clerk Auth", "Git / GitHub", "Electron.js", "Nodemailer"],
+            accent: '#A9B8C8',
+            bgTint: 'rgba(169, 184, 200, 0.12)',
+            border: 'rgba(169, 184, 200, 0.4)',
+            tagBg: 'rgba(47, 111, 168, 0.1)',
+            tagColor: '#1A4F80',
+            tagBorder: 'rgba(47, 111, 168, 0.25)'
         }
     ];
 
-    const getColorClasses = (color) => {
-        const colors = {
-            purple: "from-purple-500/20 to-purple-500/5 border-purple-500/30 text-purple-300",
-            pink: "from-pink-500/20 to-pink-500/5 border-pink-500/30 text-pink-300",
-            blue: "from-blue-500/20 to-blue-500/5 border-blue-500/30 text-blue-300",
-            green: "from-green-500/20 to-green-500/5 border-green-500/30 text-green-300",
-            orange: "from-orange-500/20 to-orange-500/5 border-orange-500/30 text-orange-300",
-            indigo: "from-indigo-500/20 to-indigo-500/5 border-indigo-500/30 text-indigo-300"
-        };
-        return colors[color] || colors.purple;
-    };
-
     return (
-        <section id="skills" className="py-20 bg-slate-950 relative overflow-hidden">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(139,92,246,0.05),rgba(255,255,255,0))]"></div>
+        <section
+            id="skills"
+            className="py-20 relative overflow-hidden"
+            style={{ backgroundColor: '#F4EEDD' }}
+        >
+            {/* Ruled paper texture */}
+            <div
+                className="absolute inset-0 opacity-20 pointer-events-none"
+                style={{
+                    backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 36px, #D9CFB6 36px, #D9CFB6 37px)'
+                }}
+            />
+            <div
+                className="absolute inset-0 pointer-events-none"
+                style={{ background: 'radial-gradient(circle at 80% 20%, rgba(168, 120, 27, 0.05), transparent 60%)' }}
+            />
 
             <div ref={containerRef} className="container mx-auto px-6 relative z-10">
-                <div className="scroll-trigger animate-fade-in stagger-1">
-                    <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 bg-linear-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent animate-text-gradient">
+                <div className="scroll-trigger animate-fade-in stagger-1 text-center mb-16">
+                    <p
+                        className="text-sm font-semibold uppercase tracking-widest mb-3"
+                        style={{ color: '#8A7E63', letterSpacing: '0.2em' }}
+                    >
+                        Tools of the trade
+                    </p>
+                    <h2
+                        className="text-4xl md:text-5xl font-bold section-ruled-header inline-block"
+                        style={{
+                            background: 'linear-gradient(135deg, #A8781B, #7A560F)',
+                            WebkitBackgroundClip: 'text',
+                            WebkitTextFillColor: 'transparent',
+                            backgroundClip: 'text'
+                        }}
+                    >
                         Skills & Technologies
                     </h2>
-                    <p className="text-center text-slate-300 mb-12 max-w-2xl mx-auto animate-blur-in stagger-2">
-                        A comprehensive toolkit for building modern, intelligent applications
+                    <p className="mt-6 max-w-2xl mx-auto animate-blur-in stagger-2" style={{ color: '#4E4635' }}>
+                        A comprehensive toolkit built through real-world projects — from enterprise SaaS to AI-powered mobile apps
                     </p>
                 </div>
 
@@ -88,15 +134,48 @@ const Skills = () => {
                     {skillCategories.map((category, index) => (
                         <div
                             key={index}
-                            className="scroll-trigger scroll-scale-in bg-slate-800/50 backdrop-blur-sm p-6 rounded-xl border border-slate-700/50 hover:border-purple-500/50 transition-all duration-500 card-hover group"
+                            className="scroll-trigger scroll-scale-in p-6 rounded-xl border backdrop-blur-sm transition-all duration-500 card-hover group card-brass-rule"
+                            style={{
+                                backgroundColor: '#FCF8EC',
+                                borderColor: category.border,
+                                boxShadow: '0 2px 12px rgba(168, 120, 27, 0.06)'
+                            }}
+                            onMouseEnter={e => {
+                                e.currentTarget.style.borderColor = category.accent;
+                                e.currentTarget.style.boxShadow = `0 16px 36px rgba(168, 120, 27, 0.12)`;
+                            }}
+                            onMouseLeave={e => {
+                                e.currentTarget.style.borderColor = category.border;
+                                e.currentTarget.style.boxShadow = '0 2px 12px rgba(168, 120, 27, 0.06)';
+                            }}
                         >
-                            <h3 className="text-xl font-bold text-slate-100 mb-4 group-hover:text-purple-300 transition-colors duration-500 animate-slide-up" style={{ animationDelay: `${index * 0.15 + 0.1}s` }}>{category.title}</h3>
+                            {/* Category header with brass accent dot */}
+                            <div className="flex items-center gap-3 mb-5">
+                                <div
+                                    className="w-3 h-3 rounded-full flex-shrink-0"
+                                    style={{ backgroundColor: category.accent }}
+                                />
+                                <h3
+                                    className="text-base font-bold uppercase tracking-widest"
+                                    style={{ color: category.accent, letterSpacing: '0.1em' }}
+                                >
+                                    {category.title}
+                                </h3>
+                            </div>
+                            {/* Hairline rule */}
+                            <div className="mb-4 h-px" style={{ backgroundColor: '#D9CFB6' }} />
+
                             <div className="flex flex-wrap gap-2">
                                 {category.skills.map((skill, skillIndex) => (
                                     <span
                                         key={skillIndex}
-                                        className={`px-3 py-1.5 rounded-lg text-sm font-medium bg-linear-to-r border hover:scale-125 hover:shadow-lg transition-all duration-300 cursor-pointer animate-fade-in item-hover ${getColorClasses(category.color)}`}
-                                        style={{ animationDelay: `${index * 0.15 + skillIndex * 0.05}s` }}
+                                        className="px-3 py-1.5 rounded-md text-xs font-semibold border hover:scale-110 transition-all duration-300 cursor-pointer animate-fade-in item-hover"
+                                        style={{
+                                            backgroundColor: category.tagBg,
+                                            color: category.tagColor,
+                                            borderColor: category.tagBorder,
+                                            animationDelay: `${index * 0.15 + skillIndex * 0.05}s`
+                                        }}
                                     >
                                         {skill}
                                     </span>

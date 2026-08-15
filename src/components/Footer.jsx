@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, Heart, ArrowUp, Zap } from 'lucide-react';
+import { Github, Linkedin, Mail, Heart, ArrowUp, ExternalLink } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 const Footer = () => {
@@ -19,50 +19,116 @@ const Footer = () => {
 
     const socialLinks = [
         { icon: Github, url: 'https://github.com/khalidhussain-dev', label: 'GitHub' },
-        { icon: Linkedin, url: 'https://linkedin.com/in/yourprofile', label: 'LinkedIn' },
-        { icon: Mail, url: 'mailto:your.email@example.com', label: 'Email' },
+        { icon: Linkedin, url: 'https://www.linkedin.com/in/khalid-hussain-dev/', label: 'LinkedIn' },
+        { icon: Mail, url: 'mailto:khalidhussain.dev@gmail.com', label: 'Email' },
+    ];
+
+    const quickLinks = ['About', 'Skills', 'Projects', 'Experience', 'Contact'];
+
+    const featuredProjects = [
+        { name: 'Zintari AI Platform', url: 'https://portal.zintariai.com/' },
+        { name: 'Scentello', url: 'https://scentello.co.uk/' },
+        { name: 'Big Break Snooker', url: 'https://www.bigbreaksnooker.co.uk/' },
+        { name: 'YeboNadi App', url: 'https://apps.apple.com/pk/app/yebonadi/id6760420574' },
     ];
 
     return (
-        <footer className="bg-slate-950 border-t border-purple-500/20 relative overflow-hidden">
-            {/* Animated background gradient */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_100%,rgba(139,92,246,0.08),rgba(255,255,255,0))]"></div>
-            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-96 h-96 bg-purple-600/5 rounded-full blur-3xl animate-pulse"></div>
+        <footer
+            className="border-t relative overflow-hidden"
+            style={{ backgroundColor: '#221C12', borderColor: 'rgba(168, 120, 27, 0.25)' }}
+        >
+            {/* Subtle brass glow at top */}
+            <div
+                className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-48 pointer-events-none"
+                style={{
+                    background: 'radial-gradient(circle, rgba(168, 120, 27, 0.12), transparent 70%)',
+                    filter: 'blur(20px)'
+                }}
+            />
 
             <div className="container mx-auto px-6 py-16 relative z-10">
-                {/* Main Content */}
-                <div className="grid md:grid-cols-3 gap-12 mb-12">
-                    {/* Brand Section */}
-                    <div className="animate-float-up stagger-1 space-y-4">
-                        <div className="group cursor-pointer">
-                            <h3 className="text-2xl font-bold bg-linear-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-all duration-600 animate-text-gradient">
+                <div className="grid md:grid-cols-4 gap-12 mb-12">
+                    {/* Brand */}
+                    <div className="md:col-span-2 animate-float-up stagger-1 space-y-4">
+                        <div>
+                            <h3
+                                className="text-2xl font-bold mb-1"
+                                style={{
+                                    background: 'linear-gradient(135deg, #A8781B, #D6BC6E)',
+                                    WebkitBackgroundClip: 'text',
+                                    WebkitTextFillColor: 'transparent',
+                                    backgroundClip: 'text'
+                                }}
+                            >
                                 Khalid Hussain
                             </h3>
-                            <div className="h-1 w-12 bg-linear-to-r from-purple-400 to-pink-600 rounded-full group-hover:w-24 transition-all duration-300"></div>
+                            <p className="text-xs font-semibold uppercase tracking-widest" style={{ color: '#8A7E63', letterSpacing: '0.18em' }}>
+                                Full Stack Developer & AI Specialist
+                            </p>
                         </div>
-                        <p className="text-slate-300 leading-relaxed animate-blur-in stagger-2 text-sm group-hover:text-slate-200 transition-colors duration-300">
-                            Full Stack Developer & AI Specialist crafting innovative solutions for the modern web. Always learning, always building.
+                        <div className="h-px w-16" style={{ background: 'linear-gradient(to right, #A8781B, #D6BC6E)' }} />
+                        <p className="text-sm leading-relaxed" style={{ color: '#8A7E63' }}>
+                            Building scalable SaaS platforms, AI-powered applications, and mobile experiences.
+                            Based in Lahore, Pakistan — available for remote projects worldwide.
                         </p>
-                        <div className="flex items-center gap-2 text-slate-400 text-xs pt-2 group-hover:text-slate-300 transition-colors duration-300">
-                            <Zap size={14} className="text-yellow-400 animate-pulse" />
-                            <span>Available for projects</span>
+
+                        {/* Social links */}
+                        <div className="flex gap-3 pt-2">
+                            {socialLinks.map(({ icon: IconComponent, url, label }) => (
+                                <a
+                                    key={label}
+                                    href={url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    title={label}
+                                    className="group w-10 h-10 rounded-lg flex items-center justify-center border transition-all duration-300 hover:scale-110 hover:-translate-y-1"
+                                    style={{
+                                        backgroundColor: 'rgba(168, 120, 27, 0.08)',
+                                        borderColor: 'rgba(168, 120, 27, 0.2)',
+                                        color: '#8A7E63'
+                                    }}
+                                    onMouseEnter={e => {
+                                        e.currentTarget.style.backgroundColor = '#A8781B';
+                                        e.currentTarget.style.borderColor = '#A8781B';
+                                        e.currentTarget.style.color = '#FCF8EC';
+                                        e.currentTarget.style.boxShadow = '0 6px 20px rgba(168,120,27,0.35)';
+                                    }}
+                                    onMouseLeave={e => {
+                                        e.currentTarget.style.backgroundColor = 'rgba(168, 120, 27, 0.08)';
+                                        e.currentTarget.style.borderColor = 'rgba(168, 120, 27, 0.2)';
+                                        e.currentTarget.style.color = '#8A7E63';
+                                        e.currentTarget.style.boxShadow = 'none';
+                                    }}
+                                >
+                                    <IconComponent size={18} className="group-hover:rotate-12 transition-transform duration-300" />
+                                </a>
+                            ))}
                         </div>
                     </div>
 
                     {/* Quick Links */}
-                    <div className="animate-float-up stagger-2" style={{ animationDelay: '0.1s' }}>
-                        <h4 className="text-slate-100 font-bold mb-6 flex items-center gap-2 animate-slide-up" style={{ animationDelay: '0.1s' }}>
-                            <span className="w-2 h-2 rounded-full bg-linear-to-r from-purple-400 to-pink-500"></span>
+                    <div className="animate-float-up stagger-2">
+                        <h4
+                            className="text-xs font-bold mb-5 uppercase tracking-widest flex items-center gap-2"
+                            style={{ color: '#D6BC6E', letterSpacing: '0.2em' }}
+                        >
+                            <span className="w-2 h-px inline-block" style={{ backgroundColor: '#A8781B' }} />
                             Quick Links
                         </h4>
                         <ul className="space-y-3">
-                            {['About', 'Projects', 'Experience', 'Contact'].map((link, idx) => (
-                                <li key={link} className="animate-fade-in" style={{ animationDelay: `${0.15 + idx * 0.05}s` }}>
+                            {quickLinks.map((link) => (
+                                <li key={link}>
                                     <a
                                         href={`#${link.toLowerCase()}`}
-                                        className="text-slate-300 hover:text-purple-300 inline-flex items-center gap-2 transition-all duration-300 group text-sm hover:scale-110"
+                                        className="text-sm inline-flex items-center gap-2 transition-all duration-300 group"
+                                        style={{ color: '#8A7E63' }}
+                                        onMouseEnter={e => e.currentTarget.style.color = '#D6BC6E'}
+                                        onMouseLeave={e => e.currentTarget.style.color = '#8A7E63'}
                                     >
-                                        <span className="w-1.5 h-1.5 rounded-full bg-purple-500 group-hover:bg-pink-500 group-hover:scale-150 transition-all duration-300"></span>
+                                        <span
+                                            className="w-1 h-1 rounded-full flex-shrink-0 group-hover:scale-150 transition-all duration-300"
+                                            style={{ backgroundColor: '#A8781B' }}
+                                        />
                                         <span className="group-hover:translate-x-1 transition-transform duration-300">{link}</span>
                                     </a>
                                 </li>
@@ -70,55 +136,66 @@ const Footer = () => {
                         </ul>
                     </div>
 
-                    {/* Social Links */}
-                    <div className="animate-float-up stagger-3" style={{ animationDelay: '0.2s' }}>
-                        <h4 className="text-slate-100 font-bold mb-6 flex items-center gap-2 animate-slide-up" style={{ animationDelay: '0.2s' }}>
-                            <span className="w-2 h-2 rounded-full bg-linear-to-r from-purple-400 to-pink-500"></span>
-                            Connect
+                    {/* Featured Projects */}
+                    <div className="animate-float-up stagger-3">
+                        <h4
+                            className="text-xs font-bold mb-5 uppercase tracking-widest flex items-center gap-2"
+                            style={{ color: '#D6BC6E', letterSpacing: '0.2em' }}
+                        >
+                            <span className="w-2 h-px inline-block" style={{ backgroundColor: '#A8781B' }} />
+                            Live Projects
                         </h4>
-                        <div className="flex gap-3 flex-wrap">
-                            {socialLinks.map((link, index) => {
-                                const IconComponent = link.icon;
-                                return (
+                        <ul className="space-y-3">
+                            {featuredProjects.map(({ name, url }) => (
+                                <li key={name}>
                                     <a
-                                        key={link.label}
-                                        href={link.url}
+                                        href={url}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        title={link.label}
-                                        className="group w-12 h-12 bg-linear-to-br from-slate-800/50 to-slate-900/50 hover:from-purple-600/50 hover:to-pink-600/50 backdrop-blur-sm rounded-lg flex items-center justify-center border border-slate-700/50 hover:border-purple-500/50 transition-all duration-300 animate-fade-in hover:shadow-xl hover:shadow-purple-500/40 hover:scale-125 hover:-translate-y-1"
-                                        style={{ animationDelay: `${0.25 + index * 0.05}s` }}
+                                        className="text-sm inline-flex items-center gap-2 transition-all duration-300 group"
+                                        style={{ color: '#8A7E63' }}
+                                        onMouseEnter={e => e.currentTarget.style.color = '#D6BC6E'}
+                                        onMouseLeave={e => e.currentTarget.style.color = '#8A7E63'}
                                     >
-                                        <IconComponent size={20} className="text-slate-300 group-hover:text-white transition-colors duration-300 group-hover:rotate-12" />
+                                        <ExternalLink size={10} className="flex-shrink-0 group-hover:scale-125 transition-transform duration-300" style={{ color: '#A8781B' }} />
+                                        <span className="group-hover:translate-x-1 transition-transform duration-300">{name}</span>
                                     </a>
-                                );
-                            })}
-                        </div>
+                                </li>
+                            ))}
+                        </ul>
                     </div>
                 </div>
 
                 {/* Divider */}
-                <div className="h-px bg-linear-to-r from-transparent via-purple-500/30 to-transparent mb-8"></div>
+                <div
+                    className="h-px mb-8"
+                    style={{ background: 'linear-gradient(to right, transparent, rgba(168,120,27,0.3), transparent)' }}
+                />
 
-                {/* Footer Bottom */}
+                {/* Footer bottom */}
                 <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-                    <div className="space-y-2 md:space-y-0">
-                        <p className="text-slate-400 text-sm animate-fade-in">
+                    <div className="space-y-1 text-center md:text-left">
+                        <p className="text-xs" style={{ color: '#4E4635' }}>
                             © {currentYear} Khalid Hussain. All rights reserved.
                         </p>
-                        <p className="text-slate-400 text-xs animate-fade-in" style={{ animationDelay: '0.1s' }}>
-                            Designed & Built with <Heart size={14} className="text-red-500 animate-pulse inline mx-1" /> using React & Tailwind CSS
+                        <p className="text-xs flex items-center gap-1 justify-center md:justify-start" style={{ color: '#4E4635' }}>
+                            Designed & Built with <Heart size={12} className="animate-pulse mx-0.5" style={{ color: '#C43C2C' }} /> using React & Tailwind CSS
                         </p>
                     </div>
 
-                    {/* Scroll to Top Button */}
+                    {/* Scroll to Top */}
                     {showScrollTop && (
                         <button
                             onClick={scrollToTop}
-                            className="group w-10 h-10 bg-linear-to-r from-purple-600 to-pink-600 rounded-lg flex items-center justify-center hover:scale-125 hover:shadow-xl hover:shadow-purple-500/50 transition-all duration-300 animate-bounce-in border border-purple-400/50"
+                            className="group w-10 h-10 rounded-lg flex items-center justify-center hover:scale-125 transition-all duration-300 animate-bounce-in border"
                             title="Back to top"
+                            style={{
+                                background: 'linear-gradient(135deg, #A8781B, #7A560F)',
+                                borderColor: '#D6BC6E',
+                                boxShadow: '0 4px 16px rgba(168,120,27,0.35)'
+                            }}
                         >
-                            <ArrowUp size={18} className="text-white group-hover:rotate-12 transition-transform duration-300" />
+                            <ArrowUp size={18} style={{ color: '#FCF8EC' }} className="group-hover:rotate-12 transition-transform duration-300" />
                         </button>
                     )}
                 </div>

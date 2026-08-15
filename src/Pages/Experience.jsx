@@ -1,4 +1,4 @@
-import { Briefcase, Calendar } from 'lucide-react';
+import { Briefcase, Calendar, ExternalLink } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 
 const Experience = () => {
@@ -28,92 +28,195 @@ const Experience = () => {
 
     const experiences = [
         {
-            title: "Senior Full Stack Developer",
-            company: "Tech Innovations Inc.",
-            period: "2023 - Present",
+            title: 'Freelance Full Stack Developer',
+            company: 'Self-Employed — Remote',
+            period: 'Dec 2024 – Present',
+            accentColor: '#A8781B',
             description: [
-                "Led development of AI-integrated web applications serving 100K+ users",
-                "Architected and implemented microservices infrastructure using Node.js and Docker",
-                "Mentored junior developers and conducted code reviews",
-                "Reduced application load time by 40% through optimization"
+                'Designed and developed Zintari AI — a scalable multi-tenant SaaS platform with AI-powered voice agents (Azure OpenAI, Azure Communication Services) for business automation, deployed on Microsoft Azure',
+                'Built the Zintari multilingual marketing website using Next.js + Strapi CMS with full SEO optimisation',
+                'Developed Scentello — a premium Next.js marketing website with Framer Motion animations for a luxury fragrance vending machine brand',
+                'Built Big Break Snooker — an online booking and management system with dynamic pricing and admin dashboard',
+                'Developed HypnoSwitch — an advanced music streaming and digital marketplace with Redis caching and subscription management',
+                'Built the YeboNadi secure evidence recording mobile app (React Native) with end-to-end encryption and chunk-based upload architecture',
+                'Developed the Zintari cross-platform mobile app (React Native + TypeScript) for iOS and Android',
             ],
-            technologies: ["React", "Node.js", "Python", "AWS", "TensorFlow"]
+            technologies: ['React.js', 'Next.js', 'React Native', 'Nest.js', 'Node.js', 'Azure OpenAI', 'Stripe', 'PostgreSQL', 'Redis', 'Microsoft Azure'],
+            liveLinks: [
+                { label: 'Zintari AI', url: 'https://portal.zintariai.com/' },
+                { label: 'Scentello', url: 'https://scentello.co.uk/' },
+                { label: 'Big Break Snooker', url: 'https://www.bigbreaksnooker.co.uk/' },
+            ]
         },
         {
-            title: "Full Stack Developer & AI Engineer",
-            company: "Digital Solutions Ltd.",
-            period: "2021 - 2023",
+            title: 'Final Year Project Lead — AI Employment Platform',
+            company: 'University Academic Project',
+            period: 'Aug 2025 – May 2026',
+            accentColor: '#C43C2C',
             description: [
-                "Developed machine learning models for predictive analytics",
-                "Built RESTful APIs and integrated third-party services",
-                "Implemented CI/CD pipelines reducing deployment time by 60%",
-                "Collaborated with cross-functional teams in Agile environment"
+                'Led development of CareerTrust — an AI-powered employment ecosystem with a Digital Employment Passport and verified career history for job seekers and employers',
+                'Implemented dual employment verification workflow with employer and employee confirmation',
+                'Integrated AI-powered resume parsing, candidate analysis, and intelligent job recommendation engine',
+                'Developed employer reputation scoring with aspect-based sentiment analysis using DistilBERT (HuggingFace Transformers)',
+                'Implemented face recognition-based identity verification and duplicate account prevention using OpenCV and InsightFace',
+                'Built analytics dashboards for employers, job seekers, and administrators with role-based access control',
+                'Collaborated in an Agile environment, managing the complete software development lifecycle with Git/GitHub',
             ],
-            technologies: ["Vue.js", "Express", "PyTorch", "MongoDB", "Docker"]
+            technologies: ['Next.js', 'TypeScript', 'Node.js', 'Express.js', 'Prisma ORM', 'PostgreSQL', 'MongoDB', 'Python FastAPI', 'DistilBERT', 'OpenCV', 'Clerk Auth', 'Cloudinary'],
+            liveLinks: []
         },
         {
-            title: "Junior Full Stack Developer",
-            company: "StartUp Ventures",
-            period: "2020 - 2021",
+            title: 'Independent Developer — Academic & Personal Projects',
+            company: 'Personal Projects',
+            period: '2024 – 2025',
+            accentColor: '#2F6FA8',
             description: [
-                "Contributed to full-stack development of multiple client projects",
-                "Implemented responsive UI components using React and Tailwind CSS",
-                "Developed backend services with Node.js and PostgreSQL",
-                "Participated in daily standups and sprint planning"
+                'Developed FoodSecure — a MERN stack food donation platform with JWT authentication, Nodemailer integration, and Cron Job automation',
+                'Built a desktop Visitor Management System using Electron.js with local SQLite storage for secure visitor tracking across offices and secured facilities',
+                'Developed QuizWhiz — a full-stack online quiz platform with PHP, MySQL, jQuery, and performance-tracking features',
+                'Developed NoteNova — a native Android notes app (Kotlin + Jetpack Compose) with SHA-256 password hashing, Room Database, Material 3 design, reactive data flows with Kotlin Coroutines, and a per-user quota system',
             ],
-            technologies: ["React", "Node.js", "PostgreSQL", "Git", "REST APIs"]
+            technologies: ['MERN Stack', 'Electron.js', 'SQLite', 'PHP', 'MySQL', 'Kotlin', 'Jetpack Compose', 'Room Database', 'Material 3'],
+            liveLinks: [
+                { label: 'NoteNova GitHub', url: 'https://github.com/khalidhussain-dev/NoteNova' }
+            ]
         }
     ];
 
     return (
-        <section id="experience" className="py-20 bg-slate-950 relative overflow-hidden">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.05),rgba(255,255,255,0))]"></div>
+        <section
+            id="experience"
+            className="py-20 relative overflow-hidden"
+            style={{ backgroundColor: '#F4EEDD' }}
+        >
+            {/* Ruled paper texture */}
+            <div
+                className="absolute inset-0 opacity-15 pointer-events-none"
+                style={{
+                    backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 36px, #D9CFB6 36px, #D9CFB6 37px)'
+                }}
+            />
+            <div
+                className="absolute inset-0 pointer-events-none"
+                style={{ background: 'radial-gradient(circle at 50% 50%, rgba(47, 111, 168, 0.04), transparent 70%)' }}
+            />
 
             <div ref={containerRef} className="container mx-auto px-6 relative z-10">
-                <div className="scroll-trigger animate-fade-in stagger-1">
-                    <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 bg-linear-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent animate-text-gradient">
+                <div className="scroll-trigger animate-fade-in stagger-1 text-center mb-16">
+                    <p
+                        className="text-sm font-semibold uppercase tracking-widest mb-3"
+                        style={{ color: '#8A7E63', letterSpacing: '0.2em' }}
+                    >
+                        Professional Journey
+                    </p>
+                    <h2
+                        className="text-4xl md:text-5xl font-bold section-ruled-header inline-block"
+                        style={{
+                            background: 'linear-gradient(135deg, #A8781B, #7A560F)',
+                            WebkitBackgroundClip: 'text',
+                            WebkitTextFillColor: 'transparent',
+                            backgroundClip: 'text'
+                        }}
+                    >
                         Experience
                     </h2>
-                    <p className="text-center text-slate-300 mb-12 max-w-2xl mx-auto animate-blur-in stagger-2">
-                        My professional journey in software development
+                    <p className="mt-6 max-w-2xl mx-auto animate-blur-in stagger-2" style={{ color: '#4E4635' }}>
+                        Building real products, solving real problems — from multi-tenant SaaS to AI-powered mobile applications
                     </p>
                 </div>
 
+                {/* Timeline */}
                 <div className="max-w-4xl mx-auto space-y-8">
                     {experiences.map((exp, index) => (
                         <div
                             key={index}
-                            className="scroll-trigger scroll-fade-in-left bg-slate-800/50 backdrop-blur-sm p-8 rounded-xl border border-slate-700/50 hover:border-purple-500/50 hover:shadow-2xl hover:shadow-purple-500/40 hover:scale-[1.02] hover-glow transition-all duration-500"
+                            className="scroll-trigger scroll-fade-in-left p-8 rounded-xl border transition-all duration-500 card-brass-rule"
+                            style={{
+                                backgroundColor: '#FCF8EC',
+                                borderColor: '#D9CFB6',
+                                boxShadow: '0 2px 16px rgba(168, 120, 27, 0.07)'
+                            }}
+                            onMouseEnter={e => {
+                                e.currentTarget.style.borderColor = exp.accentColor;
+                                e.currentTarget.style.boxShadow = `0 16px 40px rgba(168, 120, 27, 0.14)`;
+                            }}
+                            onMouseLeave={e => {
+                                e.currentTarget.style.borderColor = '#D9CFB6';
+                                e.currentTarget.style.boxShadow = '0 2px 16px rgba(168, 120, 27, 0.07)';
+                            }}
                         >
-                            <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                                <div className="animate-slide-up" style={{ animationDelay: `${index * 0.2 + 0.1}s` }}>
-                                    <h3 className="text-2xl font-bold text-slate-100 mb-2 flex items-center gap-3 group-hover:text-purple-300 transition-colors duration-300">
-                                        <Briefcase className="text-purple-400 group-hover:rotate-12 transition-transform duration-300" size={24} />
+                            <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-5">
+                                <div style={{ animationDelay: `${index * 0.2 + 0.1}s` }}>
+                                    <h3
+                                        className="text-xl font-bold mb-1 flex items-center gap-2"
+                                        style={{ color: '#221C12' }}
+                                    >
+                                        <Briefcase size={20} style={{ color: exp.accentColor }} />
                                         {exp.title}
                                     </h3>
-                                    <p className="text-purple-400 text-lg font-semibold animate-text-gradient">{exp.company}</p>
+                                    <p className="font-semibold text-sm" style={{ color: exp.accentColor }}>
+                                        {exp.company}
+                                    </p>
                                 </div>
-                                <div className="flex items-center gap-2 text-slate-300 mt-2 md:mt-0 animate-slide-up" style={{ animationDelay: `${index * 0.2 + 0.15}s` }}>
-                                    <Calendar size={18} className="animate-bounce" style={{ animationDelay: `${index * 0.2 + 0.2}s` }} />
+                                <div
+                                    className="flex items-center gap-2 mt-2 md:mt-0 px-3 py-1.5 rounded-full border text-xs font-medium"
+                                    style={{ borderColor: '#D9CFB6', color: '#4E4635', backgroundColor: '#EAE1CA' }}
+                                >
+                                    <Calendar size={14} />
                                     <span>{exp.period}</span>
                                 </div>
                             </div>
 
-                            <ul className="space-y-2 mb-4 text-slate-300">
+                            {/* Hairline rule */}
+                            <div className="mb-4 h-px" style={{ backgroundColor: '#D9CFB6' }} />
+
+                            <ul className="space-y-2 mb-5">
                                 {exp.description.map((item, itemIndex) => (
-                                    <li key={itemIndex} className="flex items-start gap-2 leading-relaxed animate-blur-in" style={{ animationDelay: `${index * 0.2 + itemIndex * 0.05 + 0.1}s` }}>
-                                        <span className="text-purple-400 mt-1 animate-pulse">▹</span>
+                                    <li
+                                        key={itemIndex}
+                                        className="flex items-start gap-2.5 text-sm leading-relaxed"
+                                        style={{ color: '#4E4635' }}
+                                    >
+                                        <span
+                                            className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0"
+                                            style={{ backgroundColor: exp.accentColor }}
+                                        />
                                         <span>{item}</span>
                                     </li>
                                 ))}
                             </ul>
 
-                            <div className="flex flex-wrap gap-2 mt-4">
+                            {/* Live links */}
+                            {exp.liveLinks.length > 0 && (
+                                <div className="flex flex-wrap gap-2 mb-4">
+                                    {exp.liveLinks.map(({ label, url }) => (
+                                        <a
+                                            key={label}
+                                            href={url}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold border transition-all duration-300 hover:scale-105"
+                                            style={{ borderColor: exp.accentColor, color: exp.accentColor, backgroundColor: 'transparent' }}
+                                            onMouseEnter={e => { e.currentTarget.style.backgroundColor = exp.accentColor; e.currentTarget.style.color = '#FCF8EC'; }}
+                                            onMouseLeave={e => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = exp.accentColor; }}
+                                        >
+                                            <ExternalLink size={10} /> {label}
+                                        </a>
+                                    ))}
+                                </div>
+                            )}
+
+                            {/* Tech tags */}
+                            <div className="flex flex-wrap gap-2">
                                 {exp.technologies.map((tech, techIndex) => (
                                     <span
                                         key={techIndex}
-                                        className="px-3 py-1 bg-purple-500/20 text-purple-300 text-sm rounded-lg border border-purple-500/30 hover:bg-purple-500/40 hover:text-purple-200 hover:scale-110 hover:shadow-lg hover:shadow-purple-500/40 transition-all duration-300 animate-fade-in cursor-pointer"
-                                        style={{ animationDelay: `${index * 0.2 + techIndex * 0.05 + 0.2}s` }}
+                                        className="px-3 py-1 text-xs rounded border hover:scale-105 transition-all duration-200 cursor-default"
+                                        style={{
+                                            backgroundColor: 'rgba(168,120,27,0.07)',
+                                            color: '#7A560F',
+                                            borderColor: 'rgba(168,120,27,0.2)'
+                                        }}
                                     >
                                         {tech}
                                     </span>
