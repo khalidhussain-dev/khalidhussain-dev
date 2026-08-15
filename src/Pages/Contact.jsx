@@ -49,8 +49,8 @@ const Contact = () => {
         {
             Icon: Mail,
             label: 'Email',
-            value: 'khalidhussain.dev@gmail.com',
-            href: 'mailto:khalidhussain.dev@gmail.com',
+            value: 'khalidhussainchandio9@gmail.com',
+            href: 'mailto:khalidhussainchandio9@gmail.com',
             accent: '#A8781B',
             bg: 'rgba(168, 120, 27, 0.08)'
         },
@@ -65,8 +65,8 @@ const Contact = () => {
         {
             Icon: Linkedin,
             label: 'LinkedIn',
-            value: 'linkedin.com/in/khalid-hussain-dev',
-            href: 'https://www.linkedin.com/in/khalid-hussain-dev/',
+            value: 'linkedin.com/in/khalid-developer',
+            href: 'https://www.linkedin.com/in/khalid-developer',
             accent: '#2F6FA8',
             bg: 'rgba(47, 111, 168, 0.08)'
         },

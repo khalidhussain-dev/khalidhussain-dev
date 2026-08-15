@@ -19,8 +19,8 @@ const Footer = () => {
 
     const socialLinks = [
         { icon: Github, url: 'https://github.com/khalidhussain-dev', label: 'GitHub' },
-        { icon: Linkedin, url: 'https://www.linkedin.com/in/khalid-hussain-dev/', label: 'LinkedIn' },
-        { icon: Mail, url: 'mailto:khalidhussain.dev@gmail.com', label: 'Email' },
+        { icon: Linkedin, url: 'https://www.linkedin.com/in/khalid-developer', label: 'LinkedIn' },
+        { icon: Mail, url: 'mailto:khalidhussainchandio9@gmail.com', label: 'Email' },
     ];
 
     const quickLinks = ['About', 'Skills', 'Projects', 'Experience', 'Contact'];

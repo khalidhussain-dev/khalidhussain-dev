@@ -27,7 +27,7 @@ const Skills = () => {
 
     const skillCategories = [
         {
-            title: "Frontend",
+            title: "Frontend & Full Stack",
             skills: ["React.js", "Next.js", "TypeScript", "JavaScript", "Redux", "Tailwind CSS", "Framer Motion", "HTML5 / CSS3"],
             accent: '#A8781B',
             bgTint: 'rgba(168, 120, 27, 0.06)',
@@ -37,8 +37,8 @@ const Skills = () => {
             tagBorder: 'rgba(168, 120, 27, 0.3)'
         },
         {
-            title: "Backend",
-            skills: ["Node.js", "Nest.js", "Express.js", "Python", "FastAPI", "REST APIs", "Redis", "JWT / Auth"],
+            title: "Backend & APIs",
+            skills: ["Node.js", "NestJS", "Express.js", "Python", "FastAPI", "REST APIs", "Redis", "JWT / Auth"],
             accent: '#C43C2C',
             bgTint: 'rgba(196, 60, 44, 0.06)',
             border: 'rgba(196, 60, 44, 0.22)',
@@ -58,7 +58,7 @@ const Skills = () => {
         },
         {
             title: "AI & Machine Learning",
-            skills: ["Azure OpenAI", "HuggingFace Transformers", "DistilBERT", "OpenCV", "InsightFace", "Face Recognition", "NLP", "Sentiment Analysis"],
+            skills: ["Azure OpenAI", "HuggingFace Transformers", "DistilBERT", "OpenCV", "InsightFace", "Face Recognition", "NLP", "Sentiment Analysis", "Python FastAPI"],
             accent: '#2E7D4F',
             bgTint: 'rgba(46, 125, 79, 0.06)',
             border: 'rgba(46, 125, 79, 0.22)',
@@ -77,14 +77,24 @@ const Skills = () => {
             tagBorder: 'rgba(154, 106, 27, 0.3)'
         },
         {
-            title: "Cloud & DevOps",
-            skills: ["Microsoft Azure", "Azure Communication Services", "Azure Speech Services", "Stripe Connect", "Clerk Auth", "Git / GitHub", "Electron.js", "Nodemailer"],
+            title: "Cloud & Integrations",
+            skills: ["Microsoft Azure", "Azure Communication Services", "Azure Speech Services", "Stripe Connect", "Google Calendar API", "Microsoft Outlook API", "Clerk Auth", "Nodemailer"],
             accent: '#A9B8C8',
             bgTint: 'rgba(169, 184, 200, 0.12)',
             border: 'rgba(169, 184, 200, 0.4)',
             tagBg: 'rgba(47, 111, 168, 0.1)',
             tagColor: '#1A4F80',
             tagBorder: 'rgba(47, 111, 168, 0.25)'
+        },
+        {
+            title: "AI Dev Tools",
+            skills: ["Claude Code", "Cursor", "Emergent", "VS Code", "GitHub Copilot", "Git / GitHub", "Electron.js", "Agile / Scrum"],
+            accent: '#7A560F',
+            bgTint: 'rgba(122, 86, 15, 0.06)',
+            border: 'rgba(122, 86, 15, 0.22)',
+            tagBg: 'rgba(122, 86, 15, 0.1)',
+            tagColor: '#5A3C05',
+            tagBorder: 'rgba(122, 86, 15, 0.3)'
         }
     ];
 
