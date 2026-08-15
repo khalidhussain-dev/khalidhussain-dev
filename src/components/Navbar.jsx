@@ -39,14 +39,25 @@ const Navbar = () => {
                 <div className="flex items-center justify-between h-20">
                     <a
                         href="#home"
-                        className="text-2xl font-bold hover:scale-110 hover:drop-shadow-lg transition-all duration-300 animate-slide-in-left flex items-center gap-2 group transform-gpu"
+                        className="text-2xl font-bold hover:scale-105 transition-all duration-500 ease-out animate-slide-in-left flex items-center gap-2.5 group transform-gpu"
                         style={{ color: '#A8781B' }}
                     >
                         <div
-                            className="w-8 h-8 rounded-lg flex items-center justify-center group-hover:rotate-12 group-hover:scale-125 transition-all duration-300"
-                            style={{ background: 'linear-gradient(135deg, #A8781B, #D6BC6E)' }}
+                            className="w-9 h-9 rounded-xl flex items-center justify-center group-hover:rotate-12 group-hover:scale-115 transition-all duration-500 ease-out"
+                            style={{
+                                background: 'linear-gradient(135deg, #A8781B, #D6BC6E)',
+                                boxShadow: '0 2px 10px rgba(168, 120, 27, 0.2)',
+                                transition: 'all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)'
+                            }}
                         >
-                            <Code2 size={18} style={{ color: '#FCF8EC' }} />
+                            <Code2
+                                size={20}
+                                style={{
+                                    color: '#FCF8EC',
+                                    transition: 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)'
+                                }}
+                                className="group-hover:rotate-6 group-hover:scale-110"
+                            />
                         </div>
                         <span className="hidden sm:inline" style={{ background: 'linear-gradient(135deg, #A8781B, #7A560F)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
                             Khalid

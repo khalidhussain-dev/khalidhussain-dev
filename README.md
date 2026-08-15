@@ -2,7 +2,7 @@
 
 <div align="center">
 
-[![Portfolio](https://img.shields.io/badge/Portfolio-Live%20Website-A8781B?style=for-the-badge&logo=react)](https://github.com/khalidhussain-dev/KhalidPortfolio)
+[![Portfolio](https://img.shields.io/badge/Portfolio-Live%20Website-A8781B?style=for-the-badge)](https://github.com/khalidhussain-dev/KhalidPortfolio)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-khalid--developer-0A66C2?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/khalid-developer)
 [![Email](https://img.shields.io/badge/Email-khalidhussainchandio9%40gmail.com-EA4335?style=for-the-badge&logo=gmail)](mailto:khalidhussainchandio9@gmail.com)
 [![Status](https://img.shields.io/badge/Status-Available%20for%20Hire-2E7D4F?style=for-the-badge)](https://github.com/khalidhussain-dev)
