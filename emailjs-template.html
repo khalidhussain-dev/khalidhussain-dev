@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio Contact — Khalid Hussain</title>
+</head>
+<body style="
+  margin: 0;
+  padding: 0;
+  background-color: #EAE1CA;
+  font-family: 'Georgia', 'Times New Roman', serif;
+">
+
+  <!-- Email wrapper -->
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #EAE1CA; padding: 40px 16px;">
+    <tr>
+      <td align="center">
+
+        <!-- Card -->
+        <table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0" style="
+          max-width: 600px;
+          width: 100%;
+          background-color: #FCF8EC;
+          border-radius: 12px;
+          border: 1px solid #D9CFB6;
+          overflow: hidden;
+          box-shadow: 0 4px 24px rgba(168, 120, 27, 0.12);
+        ">
+
+          <!-- ── Header banner ────────────────────────────────────────── -->
+          <tr>
+            <td style="
+              background: linear-gradient(135deg, #A8781B 0%, #7A560F 100%);
+              padding: 28px 32px 24px;
+              border-bottom: 3px solid #D6BC6E;
+            ">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td>
+                    <!-- Monogram / logo -->
+                    <div style="
+                      display: inline-block;
+                      width: 42px;
+                      height: 42px;
+                      background-color: rgba(252, 248, 236, 0.18);
+                      border: 1.5px solid rgba(214, 188, 110, 0.6);
+                      border-radius: 8px;
+                      text-align: center;
+                      line-height: 42px;
+                      font-size: 20px;
+                      font-weight: 800;
+                      color: #FCF8EC;
+                      font-family: 'Georgia', serif;
+                      vertical-align: middle;
+                      margin-right: 12px;
+                    ">K</div>
+                    <span style="
+                      font-size: 18px;
+                      font-weight: 700;
+                      color: #FCF8EC;
+                      font-family: Arial, sans-serif;
+                      letter-spacing: 0.02em;
+                      vertical-align: middle;
+                    ">Khalid Hussain</span>
+                  </td>
+                  <td align="right">
+                    <span style="
+                      font-size: 10px;
+                      font-weight: 600;
+                      color: rgba(252, 248, 236, 0.7);
+                      font-family: Arial, sans-serif;
+                      text-transform: uppercase;
+                      letter-spacing: 0.18em;
+                    ">Portfolio Contact</span>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Heading -->
+              <div style="
+                margin-top: 16px;
+                font-size: 22px;
+                font-weight: 700;
+                color: #FCF8EC;
+                font-family: Arial, sans-serif;
+                line-height: 1.3;
+              ">
+                New Message Received
+              </div>
+              <div style="
+                margin-top: 4px;
+                font-size: 13px;
+                color: rgba(252, 248, 236, 0.75);
+                font-family: Arial, sans-serif;
+              ">
+                A message from <strong style="color: #D6BC6E;">{{name}}</strong> has been received via your portfolio. Kindly respond at your earliest convenience.
+              </div>
+            </td>
+          </tr>
+
+          <!-- ── Body ─────────────────────────────────────────────────── -->
+          <tr>
+            <td style="padding: 28px 32px 8px;">
+
+              <!-- Sender info row -->
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="
+                background-color: #F4EEDD;
+                border: 1px solid #D9CFB6;
+                border-radius: 8px;
+                padding: 16px 20px;
+                margin-bottom: 24px;
+              ">
+                <tr>
+                  <td style="padding: 16px 20px;">
+                    <table role="presentation" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <!-- Avatar circle -->
+                        <td style="vertical-align: top; padding-right: 16px;">
+                          <div style="
+                            width: 46px;
+                            height: 46px;
+                            background: linear-gradient(135deg, #A8781B, #D6BC6E);
+                            border-radius: 50%;
+                            text-align: center;
+                            line-height: 46px;
+                            font-size: 20px;
+                            color: #FCF8EC;
+                            font-family: Arial, sans-serif;
+                            font-weight: 700;
+                          ">
+                            {{name[0]}}
+                          </div>
+                        </td>
+                        <!-- Name + time -->
+                        <td style="vertical-align: top;">
+                          <div style="
+                            font-size: 16px;
+                            font-weight: 700;
+                            color: #221C12;
+                            font-family: Arial, sans-serif;
+                            line-height: 1.3;
+                          ">{{name}}</div>
+                          <div style="
+                            font-size: 12px;
+                            color: #8A7E63;
+                            font-family: Arial, sans-serif;
+                            margin-top: 2px;
+                          ">{{email}}</div>
+                          <div style="
+                            font-size: 11px;
+                            color: #B9AC8F;
+                            font-family: Arial, sans-serif;
+                            margin-top: 3px;
+                          ">{{time}}</div>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+
+            </td>
+          </tr>
+
+          <!-- ── Message section ──────────────────────────────────────── -->
+          <tr>
+            <td style="padding: 0 32px 28px;">
+
+              <!-- Label -->
+              <div style="
+                font-size: 10px;
+                font-weight: 700;
+                color: #A8781B;
+                font-family: Arial, sans-serif;
+                text-transform: uppercase;
+                letter-spacing: 0.18em;
+                margin-bottom: 10px;
+              ">
+                &#9632;&nbsp; Message
+              </div>
+
+              <!-- Hairline rule -->
+              <div style="height: 1px; background-color: #D9CFB6; margin-bottom: 16px;"></div>
+
+              <!-- Message bubble -->
+              <div style="
+                background-color: #F4EEDD;
+                border: 1px solid #D9CFB6;
+                border-left: 4px solid #A8781B;
+                border-radius: 0 8px 8px 0;
+                padding: 18px 20px;
+                font-size: 15px;
+                color: #4E4635;
+                font-family: Arial, sans-serif;
+                line-height: 1.75;
+                white-space: pre-line;
+              ">
+                {{message}}
+              </div>
+
+            </td>
+          </tr>
+
+          <!-- ── Reply CTA ─────────────────────────────────────────────── -->
+          <tr>
+            <td style="
+              padding: 0 32px 28px;
+              text-align: center;
+            ">
+              <a href="mailto:{{email}}"
+                 style="
+                   display: inline-block;
+                   background: linear-gradient(135deg, #A8781B, #7A560F);
+                   color: #FCF8EC;
+                   font-family: Arial, sans-serif;
+                   font-size: 14px;
+                   font-weight: 700;
+                   text-decoration: none;
+                   padding: 12px 32px;
+                   border-radius: 8px;
+                   letter-spacing: 0.04em;
+                 "
+              >
+                Reply to {{name}} &rarr;
+              </a>
+            </td>
+          </tr>
+
+          <!-- ── Divider ───────────────────────────────────────────────── -->
+          <tr>
+            <td style="padding: 0 32px;">
+              <div style="
+                height: 1px;
+                background: linear-gradient(to right, transparent, #D9CFB6, transparent);
+              "></div>
+            </td>
+          </tr>
+
+          <!-- ── Footer ───────────────────────────────────────────────── -->
+          <tr>
+            <td style="
+              padding: 20px 32px 24px;
+              background-color: #F4EEDD;
+              border-radius: 0 0 12px 12px;
+            ">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td>
+                    <div style="
+                      font-size: 12px;
+                      color: #8A7E63;
+                      font-family: Arial, sans-serif;
+                      line-height: 1.6;
+                    ">
+                      This message was submitted via the contact form on<br/>
+                      <a href="https://khalidhussain.dev" style="color: #A8781B; text-decoration: none; font-weight: 600;">khalidhussain.dev</a>
+                    </div>
+                  </td>
+                  <td align="right">
+                    <div style="
+                      font-size: 11px;
+                      color: #B9AC8F;
+                      font-family: Arial, sans-serif;
+                      font-weight: 600;
+                      text-transform: uppercase;
+                      letter-spacing: 0.1em;
+                    ">Khalid Hussain</div>
+                    <div style="
+                      font-size: 10px;
+                      color: #B9AC8F;
+                      font-family: Arial, sans-serif;
+                    ">Full Stack Developer</div>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+        </table>
+        <!-- /Card -->
+
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>

@@ -5,7 +5,7 @@ import emailjs from '@emailjs/browser';
 const Contact = () => {
     const containerRef = useRef(null);
     const formRef = useRef(null);
-    const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
+    const [formData, setFormData] = useState({ name: '', email: '', message: '' });
     const [sending, setSending] = useState(false);
     const [sent, setSent] = useState(false);
     const [error, setError] = useState(null);
@@ -27,7 +27,7 @@ const Contact = () => {
             .then(() => {
                 setSending(false);
                 setSent(true);
-                setFormData({ name: '', email: '', subject: '', message: '' });
+                setFormData({ name: '', email: '', message: '' });
                 setTimeout(() => setSent(false), 5000);
             })
             .catch((err) => {
@@ -260,7 +260,6 @@ const Contact = () => {
                                 {[
                                     { id: 'name', label: 'Name', type: 'text', placeholder: 'Your full name' },
                                     { id: 'email', label: 'Email', type: 'email', placeholder: 'your.email@example.com' },
-                                    { id: 'subject', label: 'Subject', type: 'text', placeholder: 'What is this about?' },
                                 ].map(({ id, label, type, placeholder }) => (
                                     <div key={id}>
                                         <label
