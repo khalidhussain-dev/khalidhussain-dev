@@ -15,14 +15,29 @@ const Contact = () => {
         if (sending) return; // prevent double submission
 
         setError(null);
+
+        const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+        const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+        const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+        if (!serviceId || !templateId || !publicKey) {
+            console.error('EmailJS configuration missing in environment:', {
+                hasServiceId: !!serviceId,
+                hasTemplateId: !!templateId,
+                hasPublicKey: !!publicKey
+            });
+            setError('Email service is currently misconfigured. Please contact me directly at khalidhussainchandio9@gmail.com');
+            return;
+        }
+
         setSending(true);
 
         emailjs
             .sendForm(
-                import.meta.env.VITE_EMAILJS_SERVICE_ID,
-                import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+                serviceId,
+                templateId,
                 formRef.current,
-                { publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY }
+                { publicKey: publicKey }
             )
             .then(() => {
                 setSending(false);
@@ -31,9 +46,14 @@ const Contact = () => {
                 setTimeout(() => setSent(false), 5000);
             })
             .catch((err) => {
-                console.error('EmailJS error:', err);
+                console.error('EmailJS error response:', err);
                 setSending(false);
-                setError('Something went wrong. Please try again or reach me directly at khalidhussainchandio9@gmail.com');
+                const errorMsg = err?.text || err?.message || 'Something went wrong';
+                if (errorMsg.includes('quota') || errorMsg.includes('limit') || err?.status === 429) {
+                    setError('Email quota exceeded for today. Please reach me directly at khalidhussainchandio9@gmail.com');
+                } else {
+                    setError('Failed to send email. Please try again or reach me directly at khalidhussainchandio9@gmail.com');
+                }
             });
     };
 
