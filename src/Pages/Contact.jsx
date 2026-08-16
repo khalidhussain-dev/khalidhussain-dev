@@ -1,22 +1,40 @@
 import { Mail, MapPin, Phone, Send, Github, Linkedin } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
     const containerRef = useRef(null);
-    const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+    const formRef = useRef(null);
+    const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
     const [sending, setSending] = useState(false);
     const [sent, setSent] = useState(false);
+    const [error, setError] = useState(null);
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        if (sending) return; // prevent double submission
+
+        setError(null);
         setSending(true);
-        // Simulate send — wire up EmailJS or backend here
-        setTimeout(() => {
-            setSending(false);
-            setSent(true);
-            setFormData({ name: '', email: '', message: '' });
-            setTimeout(() => setSent(false), 5000);
-        }, 1200);
+
+        emailjs
+            .sendForm(
+                import.meta.env.VITE_EMAILJS_SERVICE_ID,
+                import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+                formRef.current,
+                { publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY }
+            )
+            .then(() => {
+                setSending(false);
+                setSent(true);
+                setFormData({ name: '', email: '', subject: '', message: '' });
+                setTimeout(() => setSent(false), 5000);
+            })
+            .catch((err) => {
+                console.error('EmailJS error:', err);
+                setSending(false);
+                setError('Something went wrong. Please try again or reach me directly at khalidhussainchandio9@gmail.com');
+            });
     };
 
     const handleChange = (e) => {
@@ -151,6 +169,7 @@ const Contact = () => {
                         </div>
 
                         <div className="space-y-4">
+                            {/* eslint-disable-next-line no-unused-vars */}
                             {contactItems.map(({ Icon, label, value, href, accent, bg }) => (
                                 <div
                                     key={label}
@@ -237,10 +256,11 @@ const Contact = () => {
                                 </p>
                             </div>
                         ) : (
-                            <form onSubmit={handleSubmit} className="space-y-5">
+                            <form ref={formRef} onSubmit={handleSubmit} className="space-y-5">
                                 {[
                                     { id: 'name', label: 'Name', type: 'text', placeholder: 'Your full name' },
                                     { id: 'email', label: 'Email', type: 'email', placeholder: 'your.email@example.com' },
+                                    { id: 'subject', label: 'Subject', type: 'text', placeholder: 'What is this about?' },
                                 ].map(({ id, label, type, placeholder }) => (
                                     <div key={id}>
                                         <label
@@ -298,6 +318,20 @@ const Contact = () => {
                                         }}
                                     />
                                 </div>
+
+                                {/* Error message */}
+                                {error && (
+                                    <div
+                                        className="px-4 py-3 rounded-lg text-sm"
+                                        style={{
+                                            backgroundColor: 'rgba(196, 60, 44, 0.08)',
+                                            border: '1px solid rgba(196, 60, 44, 0.25)',
+                                            color: '#C43C2C'
+                                        }}
+                                    >
+                                        {error}
+                                    </div>
+                                )}
 
                                 <button
                                     type="submit"
